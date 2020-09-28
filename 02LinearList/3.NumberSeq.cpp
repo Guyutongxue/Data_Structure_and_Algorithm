@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <limits>
 using namespace std;
 int len[32000]{};
 
@@ -7,9 +8,12 @@ int getDigit(int i) {
     return (int)log10(i) + 1;
 }
 
+constexpr int MAX = numeric_limits<int>::max();
+
 int main() {
-    int t, n, sum = 0;
-    for (int i = 1; sum >= 0; i++) {
+    int t, n;
+    unsigned sum = 0u;
+    for (int i = 1; sum <= MAX; i++) {
         len[i] = len[i - 1] + getDigit(i);
         sum += len[i];
     }
