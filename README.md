@@ -1,3 +1,3 @@
 # Data Structure & Algorithm
 
-Repo for storing homeworks.
+Repo for storing homework.
