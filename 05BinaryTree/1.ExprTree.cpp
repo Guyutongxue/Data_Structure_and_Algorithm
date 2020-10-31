@@ -35,19 +35,16 @@ void printTree(Node* root, int x, int y, std::size_t spaceNum) {
 }
 
 int calculate(Node* r) {
-    if (isalpha(r->data))
-        return m[r->data];
-    int lhs = calculate(r->left);
     switch (r->data) {
-        case '+': return lhs + calculate(r->right);
-        case '-': return lhs - calculate(r->right);
-        case '*': return lhs * calculate(r->right);
-        case '/': return lhs / calculate(r->right);
+        case '+': return calculate(r->left) + calculate(r->right);
+        case '-': return calculate(r->left) - calculate(r->right);
+        case '*': return calculate(r->left) * calculate(r->right);
+        case '/': return calculate(r->left) / calculate(r->right);
         default: return m[r->data];
     }
 }
 
-std::string getPrefixExpr(const std::string& infixExpr) {
+std::string getSuffixExpr(const std::string& infixExpr) {
     std::string result;
     std::stack<char> s;
     for (auto&& i : infixExpr) {
@@ -93,11 +90,11 @@ int main() {
         std::cin >> var >> val;
         m[var] = val;
     }
-    std::string prefixExpr = getPrefixExpr(infixExpr);
-    std::cout << prefixExpr << std::endl;
+    std::string suffixExpr = getSuffixExpr(infixExpr);
+    std::cout << suffixExpr << std::endl;
     Node* root;
     std::stack<Node*> s;
-    for (auto&& i : prefixExpr) {
+    for (auto&& i : suffixExpr) {
         root = new Node{i, nullptr, nullptr};
         if (!std::isalpha(i)) {
             root->right = s.top();
