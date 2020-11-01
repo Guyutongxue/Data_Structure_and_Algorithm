@@ -48,7 +48,7 @@ std::string getSuffixExpr(const std::string& infixExpr) {
     std::string result;
     std::stack<char> s;
     for (auto&& i : infixExpr) {
-        if (isalpha(i))
+        if (std::isalpha(i))
             result += i;
         else if (i == '(')
             s.push(i);

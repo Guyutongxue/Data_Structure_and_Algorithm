@@ -10,7 +10,7 @@ int main() {
     std::scanf("%d", &t);
     std::cin.get();
     while (t--) {
-        char mubiao[300];
+        char target[300];
         char tmp[400];
         int cnt = 0;
         while (true) {
@@ -21,11 +21,11 @@ int main() {
             tmp[strlen(tmp)] = '\0';
             std::strcpy(name[cnt++], tmp);
         }
-        std::cin.getline(mubiao, 300);
+        std::cin.getline(target, 300);
         bool isFound = false;
         int pos;
         for (int i = 0; i < cnt; i++) {
-            if (!std::strcmp(mubiao, name[i])) {
+            if (!std::strcmp(target, name[i])) {
                 isFound = true;
                 pos = i;
                 break;
