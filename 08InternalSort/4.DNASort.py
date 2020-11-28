@@ -1,0 +1,1 @@
+print('\n'.join(sorted([input() for i in range(int(input().split()[1]))],key=lambda x:sum([1 for i in range(len(x)) for j in range(i+1,len(x)) if x[i]>x[j]]))))
